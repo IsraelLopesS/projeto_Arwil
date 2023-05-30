@@ -35,6 +35,8 @@
   .header-scroll {
     background-color: #ffffff; /* cor de fundo ao rolar a página */
     color: #4a4a4a;
+    border-bottom: orange solid;
+    z-index: 9999;
   }
   
   a{padding: 2px;
@@ -142,7 +144,6 @@
   .about {
     width: 100%;
    display: flex;
-    margin-bottom: 30px;
     margin-top: 30px;
   }
  .sobre{
@@ -153,9 +154,10 @@
   display: flex;
   justify-content: right;
   padding-right: 30px; 
+  padding-bottom: 10px;
  }
  .imgSelo{
-  transform: rotate(30deg);
+  transform: rotate(15deg);
  }
  .textSobre{
   margin-top: 30px;
@@ -183,44 +185,172 @@
   
   .premium {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    width: 100%;
+    padding: 25px;
+    background-color: orange;
     align-items: center;
     margin-bottom: 30px;
+    margin-top: 0;
+  }
+  .infopremium{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    color: white;
+  }
+  .linhaVertical{
+    border-left: 2px solid #ffffff;
+    height: 150px; /* Defina a altura da linha vertical aqui */
   }
   
-  .premium h5 {
-    font-size: 18px;
+  .infopremium h5{
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(28, 40, 65);
+  }
+  .infopremium h2{
+    font-weight: bold;
+    font-size: 35px;
   }
   
   .projects {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
     text-align: center;
     margin-bottom: 30px;
   }
-  
-  .projects h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
+  .barra{
+    margin-bottom: 40px;
   }
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+
+  .carousel-container {
+    width: 45%;
+    height: 300px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    margin-right: 30px;
+  }
+
+  .carousel{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: all 1s;
+    display: flex;
+  justify-content: space-between;
+  }
+  .carousel.zoomed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .carousel.zoomed .carousel-image-container {
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
+  .carousel.zoomed .carousel-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .carousel.zoomed .controls,
+  .carousel.zoomed .close-btn {
+    display: none;
+  }
+  
+  .carousel.zoomed .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+
+  .prev-btn{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 25%;
+    background-color: #160f6500;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .next-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; 
+    width: 25%;
+    background-color: #8cff0000;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  
   
   .client {
+    width: 100%;
     text-align: center;
     margin-bottom: 30px;
+    background-color: #d4d2d2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .navClient{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+  
+  }
+  .client1{
+
+    background-image: url("./img/several/11.png");
+    background-size:inherit;
+    background-position: center;
+    background-repeat: no-repeat, no-repeat;
+    width: 200px;
+    height: 200px;
+    transition: all 1s;
+  }
+  .client1:hover{
+    background-image: url("./img/several/5.png");
+    background-size: cover;
   }
   
-  .client h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
+ 
   
   .contact {
     text-align: center;
     margin-bottom: 30px;
   }
   
-  .contact h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
+  
   
   .contact nav {
     margin-bottom: 10px;
@@ -250,21 +380,30 @@
   .form input[type="email"],
   .form input[type="tel"],
   .form textarea {
-    width: 100%;
+    width: 70%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+  .form textarea{
+    height: 100px;
+  }
   
   button {
-    width: 100%;
+    width: 70%;
     padding: 10px;
     background-color: #333;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 30px;
+  }
+  button:hover{
+    box-shadow: #333 0 0 20px;
+    border: white solid;
   }
   
   /* Estilos do footer */
