@@ -468,6 +468,9 @@
   header {
     padding: 5px;
   }
+  .menu {
+    display: none;
+  }
 
   .whats {
     padding-left: 5%;
@@ -506,6 +509,7 @@
   .boxS {
     width: 90%;
     margin-bottom: 20px;
+    
   }
 
   .about {
@@ -513,7 +517,8 @@
   }
 
   .sobre {
-    padding-left: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
     width: 100%;
   }
 
