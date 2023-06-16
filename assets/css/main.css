@@ -2744,13 +2744,13 @@ section {
 }
 
 .gallery {
-  width: 90%;
+  width: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-@media (max-width: 1570px) {
+@media (max-width: 1400px) {
   .gallery {
     flex-wrap: wrap;
   }
@@ -2774,7 +2774,7 @@ section {
 }
 
 .carousel-image {
-  width: auto;
+  max-width: 100%;
   height: 100%;
   margin-left: auto;
   margin-right: auto;
