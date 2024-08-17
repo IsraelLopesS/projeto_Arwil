@@ -1,5 +1,4 @@
 import { createCarousel } from "./galery.js";
-import { initAjaxForm } from "../../forms/form.js"
 import { headerFixed} from "./header.js"
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -219,5 +218,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
   carousels.forEach(createCarousel);
   headerFixed()
-  initAjaxForm();
+ 
 });

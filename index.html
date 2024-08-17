@@ -350,45 +350,41 @@
 
               </div>
             </div>
-
-
-            <div class="col-lg-5" data-aos="fade"
-              style="background-color: white; border-radius: 20px 0px 20px 20px; padding: 30px;">
-              <form id="contactForm" action="https://formspree.io/f/xknaaenq" method="post">
+           
+           
+            
+            <div class="col-lg-5 " data-aos="fade" style="background-color: white; border-radius: 20px 0px 20px 20px; padding: 30px; ">
+              <form id="contactForm" >
                 <h2>Solicite um orçamento<span style="color: orange;">!</span></h2>
 
                 <div class="row gy-3">
 
-                  <div class="col-md-12">
-                    <input type="text" id="name" name="name" class="form-control" placeholder="Nome" required>
-                  </div>
-
-                  <div class="col-md-12 ">
-                    <input class="form-control" type="email" id="email" name="email" placeholder="Email" required>
-                  </div>
-
-                  <div class="col-md-12">
-                    <input class="form-control" type="tel" id="telephone" name="telephone" placeholder="Telefone"
-                      required>
-                  </div>
-
-                  <div class="col-md-12">
-                    <textarea class="form-control" type="text" id="messagem" name="message" rows="6"
-                      placeholder="Menssagem" required></textarea>
-                  </div>
-
-                  <div class="col-md-12 text-center">
-                    <div id="message" style="display: none;"></div>
-
-                    <button style="width: 80%; background-color: orange; color: white; border-radius: 10px;
-              border: none;" type="submit">ENVIAR</button>
-                  </div>
-
+                <div class="col-md-12">
+                <input class="form-control" type="text" id="name" placeholder="Seu nome" required />
                 </div>
+
+                <div class="col-md-12 ">
+                <input class="form-control" type="email" id="email" placeholder="Seu email" required />
+                </div>
+
+                <div class="col-md-12">
+                  <input class="form-control" type="tel" id="telephone" name="telephone" placeholder="Telefone"
+                    required>
+                </div>
+                <div class="col-md-12">
+                <textarea class="form-control" id="message" placeholder="Sua mensagem"  rows="6"required></textarea>
+                </div>
+              </div>
+              <div class="col-md-12 text-center mt-3">
+                <button style="width: 80%; background-color: orange; color: white; border-radius: 10px;
+              border: none;"type="submit">Enviar</button>
+                <div id="notice"></div>
+              </div>
+              </div>
               </form>
             </div>
-
-          </div>
+            
+            
 
         </div>
       </section>
@@ -413,16 +409,48 @@
       class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader"></div>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LeH7CgqAAAAAKPnbcEjMl0W7r8QE16X4kmfC8Yz"></script>
 
-
+  <script>
+    const form = document.getElementById('contactForm');
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      grecaptcha.ready(async function() {
+        const recaptchaToken = await grecaptcha.execute('6LeH7CgqAAAAAKPnbcEjMl0W7r8QE16X4kmfC8Yz', {action: 'submit'});
+        
+        const formData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          message: document.getElementById('message').value,
+          telephone: document.getElementById('telephone').value,
+          recaptchaToken: recaptchaToken,
+        };
+        const notice = document.getElementById('notice');
+        try {
+          const response = await fetch('http://challenge-env.eba-8spm99ca.us-east-2.elasticbeanstalk.com/submit-form', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          });
+          const result = await response.json();
+          
+          notice.innerHTML = result.message;
+        } catch (error) {
+          notice.innerHTML = 'Ocorreu um erro ao enviar a mensagem. Por favor, entre em contato pelo WhatsApp, telefone ou e-mail.';
+        }
+      });
+    });
+  </script>
 
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
 
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="assets/js/main.js" type="module"></script>
 
 
